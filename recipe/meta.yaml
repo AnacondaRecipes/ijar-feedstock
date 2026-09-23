@@ -39,8 +39,9 @@ test:
 about:
   home: https://github.com/bazelbuild/bazel/tree/master/third_party/ijar
   dev_url: https://github.com/bazelbuild/bazel/tree/master/third_party/ijar
+  doc_url: https://github.com/bazelbuild/bazel/tree/master/third_party/ijar
   license: Apache-2.0
-  license_family: MIT
+  license_family: Apache
   license_file: third_party/ijar/LICENSE
   summary: A tool for generating interface .jars from normal .jars
   description: A tool for generating interface .jars from normal .jars
