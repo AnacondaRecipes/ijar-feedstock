@@ -20,3 +20,11 @@ pushd third_party/ijar
 mkdir -p $PREFIX/bin
 cp ../../bazel-out/${TARGET_CPU}-fastbuild/bin/third_party/ijar/ijar $PREFIX/bin
 cp ../../bazel-out/${TARGET_CPU}-fastbuild/bin/third_party/ijar/zipper $PREFIX/bin
+
+if [[ "${target_platform}" == linux-* ]]; then
+    # The bazel crosstool bakes "$PREFIX/lib:$BUILD_PREFIX/lib" into the RPATH, so the
+    # shipped binaries keep a hardcoded build-host path. Rewrite it to the relocatable
+    # conda location; bazel marks its outputs read-only, hence the chmod.
+    chmod +w $PREFIX/bin/ijar $PREFIX/bin/zipper
+    patchelf --set-rpath '$ORIGIN/../lib' $PREFIX/bin/ijar $PREFIX/bin/zipper
+fi
