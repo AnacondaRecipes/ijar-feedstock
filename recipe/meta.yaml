@@ -19,7 +19,7 @@ source:
     sha256: 795865814cfa6fed8d54350ada5d9a3e865b8441927092a004142fc7ef67d357  # [build_platform == "osx-arm64"]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
@@ -29,6 +29,7 @@ requirements:
     - {{ compiler('cxx') }}
     - bazel-toolchain >=0.2.0,<0.5.0
     - openjdk
+    - patchelf  # [linux]
     - sed
 
 test:
